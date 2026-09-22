@@ -1,0 +1,43 @@
+# CamerTrust — E2 — Dépendances de l'API
+# ==========================================
+# Installation : pip install -r requirements.txt
+#
+# IMPORTANT : les versions de scikit-learn / xgboost / pandas / numpy sont
+# alignées sur celles utilisées par E1 pour entraîner et sérialiser
+# `pipeline_complet.pkl` (voir modele_e1/README.md). Un décalage de version
+# majeure sur ces bibliothèques peut empêcher le pipeline de se recharger
+# correctement (avertissement, voire erreur, au chargement du .pkl) — ne
+# pas les mettre à jour sans réentraîner et resauvegarder le modèle.
+
+# --- API web ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20   # requis par FastAPI pour lire les Form() (webhook USSD)
+
+# --- Base de données ---
+sqlalchemy==2.0.54
+alembic==1.14.0
+psycopg2-binary==2.9.10    # driver PostgreSQL (production, voir docker-compose.yml)
+
+# --- Authentification ---
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+
+# --- Validation ---
+pydantic==2.10.4
+
+# --- Modèle d'E1 (chargé par api/scoring.py depuis modele_e1/) ---
+joblib==1.5.3
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+xgboost==3.2.0
+shap==0.51.0
+
+# --- Tests ---
+pytest==8.3.4
+pytest-cov==6.0.0
+httpx==0.28.1               # requis par fastapi.testclient.TestClient
+
+# --- Tests de charge (plan p.9 : "latence < 2s en charge") ---
+locust==2.32.4
