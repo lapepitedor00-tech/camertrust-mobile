@@ -1,0 +1,38 @@
+{
+  "features": [
+    "amount",
+    "heure",
+    "ecart_montant_moyen",
+    "heure_inhabituelle",
+    "destinataire_jamais_vu",
+    "nb_transactions_compte_7j",
+    "compte_nouveau",
+    "type_CASH_IN",
+    "type_CASH_OUT",
+    "type_DEBIT",
+    "type_PAYMENT",
+    "type_TRANSFER"
+  ],
+  "input_format": "vecteur numérique, une valeur par feature, dans l'ordre de `features`",
+  "threshold": 0.5,
+  "metrics": {
+    "accuracy": 0.9865206471547885,
+    "precision": 0.05028762293560957,
+    "rappel": 0.5280077934729663,
+    "f1": 0.09182938709814054,
+    "auc_roc": 0.9278785007115286,
+    "seuil": 0.5
+  },
+  "motifs": [
+    "amount",
+    "heure",
+    "ecart_montant_moyen",
+    "heure_inhabituelle",
+    "destinataire_jamais_vu",
+    "nb_transactions_compte_7j",
+    "compte_nouveau",
+    "type_TRANSFER",
+    "type_CASH_OUT"
+  ],
+  "longueur_max_motif": 120
+}
